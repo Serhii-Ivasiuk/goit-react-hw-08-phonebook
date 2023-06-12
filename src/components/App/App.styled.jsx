@@ -35,7 +35,13 @@ export const ContactsWrapper = styled.div`
   border-radius: 12px;
 `;
 
-export const NoContactsMessage = styled.p`
+export const InfoMessage = styled.p`
+  font-weight: 700;
+  text-align: center;
+  color: #505050;
+`;
+
+export const ErrorMessage = styled.p`
   font-weight: 700;
   text-align: center;
   color: #fc8181;

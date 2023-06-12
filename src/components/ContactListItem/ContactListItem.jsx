@@ -2,15 +2,19 @@
 import PropTypes from 'prop-types';
 // Styled components
 import { ListItem, Text, Number, RemoveBtn } from './ContactListItem.styled';
+import { useSelector } from 'react-redux';
+import { getIsLoading } from 'redux/selectors';
 
 export const ContactListItem = ({ contactName, contactNumber, onClick }) => {
+  const loading = useSelector(getIsLoading);
+
   return (
     <ListItem>
       <Text>
         {contactName}: <Number>{contactNumber}</Number>
       </Text>
 
-      <RemoveBtn type="button" onClick={onClick}>
+      <RemoveBtn type="button" disabled={loading} onClick={onClick}>
         Remove
       </RemoveBtn>
     </ListItem>

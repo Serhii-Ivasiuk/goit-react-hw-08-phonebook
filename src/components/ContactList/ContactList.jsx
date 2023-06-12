@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ContactListItem } from 'components/ContactListItem/ContactListItem';
 // Redux selectors
 import { getContacts, getFilter } from 'redux/selectors';
-// Redux actions
-import { removeContact } from 'redux/contactsSlice';
+// Redux operations
+import { deleteContact } from 'redux/operations';
 // Styled components
-import { List } from './ContactList.styled';
+import { InfoMessage, List } from './ContactList.styled';
 
 export const ContactList = () => {
   const contacts = useSelector(getContacts);
@@ -15,7 +15,7 @@ export const ContactList = () => {
   const dispatch = useDispatch();
 
   const handleRemoveContact = id => {
-    dispatch(removeContact(id));
+    dispatch(deleteContact(id));
   };
 
   const filteredAndSortedContacts = contacts
@@ -23,17 +23,25 @@ export const ContactList = () => {
     .sort((a, b) => a.name.localeCompare(b.name));
 
   return (
-    <List>
-      {filteredAndSortedContacts.map(({ id, name, number }) => {
-        return (
-          <ContactListItem
-            key={id}
-            contactName={name}
-            contactNumber={number}
-            onClick={() => handleRemoveContact(id)}
-          />
-        );
-      })}
-    </List>
+    <>
+      {filteredAndSortedContacts.length === 0 && (
+        <InfoMessage>
+          Contacts not found. Please, try to change your request.
+        </InfoMessage>
+      )}
+
+      <List>
+        {filteredAndSortedContacts.map(({ id, name, phone }) => {
+          return (
+            <ContactListItem
+              key={id}
+              contactName={name}
+              contactNumber={phone}
+              onClick={() => handleRemoveContact(id)}
+            />
+          );
+        })}
+      </List>
+    </>
   );
 };

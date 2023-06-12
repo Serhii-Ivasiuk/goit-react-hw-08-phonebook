@@ -36,4 +36,8 @@ export const RemoveBtn = styled.button`
   &:focus {
     background-color: #e7b500;
   }
+
+  &:disabled {
+    background-color: #505050;
+  }
 `;

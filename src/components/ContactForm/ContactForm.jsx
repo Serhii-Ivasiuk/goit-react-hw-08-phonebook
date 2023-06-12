@@ -4,8 +4,8 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 // Redux selectors
 import { getContacts } from 'redux/selectors';
-// Redux actions
-import { addContact } from 'redux/contactsSlice';
+// Redux operations
+import { addContact } from 'redux/operations';
 // Styled components
 import {
   AddContactForm,
@@ -60,7 +60,12 @@ export const ContactForm = () => {
       );
     }
 
-    dispatch(addContact(name, number));
+    const newContact = {
+      name,
+      phone: number,
+    };
+
+    dispatch(addContact(newContact));
 
     resetForm();
 

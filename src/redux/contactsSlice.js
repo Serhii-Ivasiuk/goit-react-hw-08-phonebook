@@ -9,6 +9,10 @@ const initialState = {
   error: null,
 };
 
+const isPendingAction = action => action.type.endsWith('/pending');
+
+const isRejectedAction = action => action.type.endsWith('/rejected');
+
 const handlePending = state => {
   state.isLoading = true;
 };
@@ -23,31 +27,31 @@ const resetErrorAndLoading = state => {
   state.isLoading = false;
 };
 
+const handleFetchContactsFulfilled = (state, action) => {
+  resetErrorAndLoading(state);
+  state.items = action.payload;
+};
+
+const handleAddContactFulfilled = (state, action) => {
+  resetErrorAndLoading(state);
+  state.items.push(action.payload);
+};
+
+const handleDeleteContactFulfilled = (state, action) => {
+  resetErrorAndLoading(state);
+  state.items = state.items.filter(item => item.id !== action.payload.id);
+};
+
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState,
   extraReducers: builder => {
-    // fetchContacts
-    builder.addCase(fetchContacts.pending, handlePending);
-    builder.addCase(fetchContacts.rejected, handleRejected);
-    builder.addCase(fetchContacts.fulfilled, (state, action) => {
-      resetErrorAndLoading(state);
-      state.items = action.payload;
-    });
-    // addContact
-    builder.addCase(addContact.pending, handlePending);
-    builder.addCase(addContact.rejected, handleRejected);
-    builder.addCase(addContact.fulfilled, (state, action) => {
-      resetErrorAndLoading(state);
-      state.items.push(action.payload);
-    });
-    // deleteContact
-    builder.addCase(deleteContact.pending, handlePending);
-    builder.addCase(deleteContact.rejected, handleRejected);
-    builder.addCase(deleteContact.fulfilled, (state, action) => {
-      resetErrorAndLoading(state);
-      state.items = state.items.filter(item => item.id !== action.payload.id);
-    });
+    builder
+      .addCase(fetchContacts.fulfilled, handleFetchContactsFulfilled)
+      .addCase(addContact.fulfilled, handleAddContactFulfilled)
+      .addCase(deleteContact.fulfilled, handleDeleteContactFulfilled)
+      .addMatcher(isPendingAction, handlePending)
+      .addMatcher(isRejectedAction, handleRejected);
   },
 });
 

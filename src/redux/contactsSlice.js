@@ -15,6 +15,7 @@ const isRejectedAction = action => action.type.endsWith('/rejected');
 
 const handlePending = state => {
   state.isLoading = true;
+  state.error = null;
 };
 
 const handleRejected = (state, action) => {
@@ -22,24 +23,19 @@ const handleRejected = (state, action) => {
   state.isLoading = false;
 };
 
-const resetErrorAndLoading = state => {
-  state.error = null;
+const handleFetchContactsFulfilled = (state, action) => {
+  state.items = action.payload;
   state.isLoading = false;
 };
 
-const handleFetchContactsFulfilled = (state, action) => {
-  resetErrorAndLoading(state);
-  state.items = action.payload;
-};
-
 const handleAddContactFulfilled = (state, action) => {
-  resetErrorAndLoading(state);
   state.items.push(action.payload);
+  state.isLoading = false;
 };
 
 const handleDeleteContactFulfilled = (state, action) => {
-  resetErrorAndLoading(state);
   state.items = state.items.filter(item => item.id !== action.payload.id);
+  state.isLoading = false;
 };
 
 const contactsSlice = createSlice({

@@ -1,12 +1,23 @@
 // Libs
 import PropTypes from 'prop-types';
+// Redux operations
+import { deleteContact } from 'redux/operations';
 // Styled components
 import { ListItem, Text, Number, RemoveBtn } from './ContactListItem.styled';
-import { useSelector } from 'react-redux';
-import { getIsLoading } from 'redux/selectors';
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 
-export const ContactListItem = ({ contactName, contactNumber, onClick }) => {
-  const loading = useSelector(getIsLoading);
+export const ContactListItem = ({ id, contactName, contactNumber }) => {
+  const [isRemoving, setIsRemoving] = useState(false);
+  const dispatch = useDispatch();
+
+  const handleRemoveContact = () => {
+    setIsRemoving(true);
+
+    dispatch(deleteContact(id)).finally(() => {
+      setIsRemoving(false);
+    });
+  };
 
   return (
     <ListItem>
@@ -14,7 +25,11 @@ export const ContactListItem = ({ contactName, contactNumber, onClick }) => {
         {contactName}: <Number>{contactNumber}</Number>
       </Text>
 
-      <RemoveBtn type="button" disabled={loading} onClick={onClick}>
+      <RemoveBtn
+        type="button"
+        disabled={isRemoving}
+        onClick={handleRemoveContact}
+      >
         Remove
       </RemoveBtn>
     </ListItem>
@@ -22,7 +37,7 @@ export const ContactListItem = ({ contactName, contactNumber, onClick }) => {
 };
 
 ContactListItem.propTypes = {
+  id: PropTypes.string.isRequired,
   contactName: PropTypes.string.isRequired,
   contactNumber: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
 };

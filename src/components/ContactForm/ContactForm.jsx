@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 // Redux selectors
-import { getContacts } from 'redux/selectors';
+import { getContacts } from 'redux/contacts/contactsSelectors';
 // Redux operations
-import { addContact } from 'redux/operations';
+import { addContact } from 'redux/contacts/contactsOperations';
 // Styled components
 import {
   AddContactForm,

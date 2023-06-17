@@ -1,9 +1,9 @@
 // Libs
 import { useDispatch, useSelector } from 'react-redux';
 // Redux selectors
-import { getFilter } from 'redux/selectors';
+import { getFilter } from 'redux/filter/filterSelectors';
 // Redux actions
-import { filterContacts } from 'redux/filterSlice';
+import { filterContacts } from 'redux/filter/filterSlice';
 // Styled components
 import { Label, InputHeading, Input } from './Filter.styled';
 

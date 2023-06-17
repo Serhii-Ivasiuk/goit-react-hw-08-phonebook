@@ -3,7 +3,8 @@ import { useSelector } from 'react-redux';
 // React components
 import { ContactListItem } from 'components/ContactListItem/ContactListItem';
 // Redux selectors
-import { getContacts, getFilter } from 'redux/selectors';
+import { getContacts } from 'redux/contacts/contactsSelectors';
+import { getFilter } from 'redux/filter/filterSelectors';
 // Styled components
 import { InfoMessage, List } from './ContactList.styled';
 

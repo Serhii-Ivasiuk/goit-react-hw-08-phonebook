@@ -1,7 +1,7 @@
 // Libs
 import PropTypes from 'prop-types';
 // Redux operations
-import { deleteContact } from 'redux/operations';
+import { deleteContact } from 'redux/contacts/contactsOperations';
 // Styled components
 import { ListItem, Text, Number, RemoveBtn } from './ContactListItem.styled';
 import { useDispatch } from 'react-redux';

@@ -6,7 +6,10 @@ export const Navigation = () => {
     <nav>
       <NavigationList>
         <li>
-          <StyledNavLink to="/">Contacts</StyledNavLink>
+          <StyledNavLink to="/">Home</StyledNavLink>
+        </li>
+        <li>
+          <StyledNavLink to="/contacts">Contacts</StyledNavLink>
         </li>
       </NavigationList>
     </nav>

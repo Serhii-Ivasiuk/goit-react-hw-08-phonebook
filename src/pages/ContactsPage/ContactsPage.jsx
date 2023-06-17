@@ -6,9 +6,13 @@ import { ContactForm } from 'components/ContactForm/ContactForm';
 import { Filter } from 'components/Filter/Filter';
 import { ContactList } from 'components/ContactList/ContactList';
 // Redux selectors
-import { getContacts, getError, getIsLoading } from 'redux/selectors';
+import {
+  getContacts,
+  getError,
+  getIsLoading,
+} from 'redux/contacts/contactsSelectors';
 // Redux operations
-import { fetchContacts } from 'redux/operations';
+import { fetchContacts } from 'redux/contacts/contactsOperations';
 // Styled components
 import {
   ContactsPageWrap,

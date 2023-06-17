@@ -9,7 +9,7 @@ export const AuthNav = () => {
           <StyledNavLink to="/register">Register</StyledNavLink>
         </li>
         <li>
-          <StyledNavLink to="/login">Login</StyledNavLink>
+          <StyledNavLink to="/login">Log in</StyledNavLink>
         </li>
       </AuthNavList>
     </div>

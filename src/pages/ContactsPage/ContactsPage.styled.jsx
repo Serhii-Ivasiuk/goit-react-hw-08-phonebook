@@ -1,15 +1,11 @@
 // Libs
 import styled from '@emotion/styled';
 
-export const Container = styled.div`
+export const ContactsPageWrap = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
-  width: 480px;
-  height: calc(100vh - 80px);
-  margin: 0 auto;
-  padding: 20px;
-  color: DarkSlateGray;
+  height: 100vh;
 `;
 
 export const Section = styled.div`

@@ -5,7 +5,7 @@ export const ContactsPageWrap = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
-  height: 100vh;
+  height: 100%;
 `;
 
 export const Section = styled.div`

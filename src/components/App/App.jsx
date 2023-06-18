@@ -47,7 +47,6 @@ export const App = () => {
             <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
           }
         />
-
         <Route path="*" element={<Navigate to="/" replace={true} />} />
       </Route>
     </Routes>

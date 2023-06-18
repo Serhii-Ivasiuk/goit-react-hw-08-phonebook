@@ -1,5 +1,9 @@
 // Libs
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
+// Redux operations
+import { refresh } from 'redux/auth/authOperations';
 // Layout
 import { Layout } from 'components/Layout/Layout';
 // Pages
@@ -9,6 +13,12 @@ import { RegisterPage } from 'pages/RegisterPage/RegisterPage';
 import { LoginPage } from 'pages/LoginPage/LoginPage';
 
 export const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(refresh());
+  }, [dispatch]);
+
   return (
     <>
       <Routes>

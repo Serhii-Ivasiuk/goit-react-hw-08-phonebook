@@ -11,7 +11,7 @@ export const UserMenuWrap = styled.div`
   border-radius: 8px;
   overflow: hidden;
 `;
-export const UserMail = styled.p`
+export const UserName = styled.p`
   font-weight: 700;
 `;
 

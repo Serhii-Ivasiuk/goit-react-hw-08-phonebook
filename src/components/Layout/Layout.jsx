@@ -1,3 +1,5 @@
+// Libs
+import { Suspense } from 'react';
 // React components
 import { AppBar } from 'components/AppBar/AppBar';
 import { Outlet } from 'react-router-dom';
@@ -14,7 +16,9 @@ export const Layout = () => {
       </header>
       <main>
         <Container>
-          <Outlet />
+          <Suspense fallback={<h1>Suspense loading...</h1>}>
+            <Outlet />
+          </Suspense>
         </Container>
       </main>
     </LayoutWrap>

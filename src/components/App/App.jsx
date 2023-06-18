@@ -2,6 +2,8 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
+// Helpers
+import { lazyNamedModuleImport } from 'helpers/lazyModuleImport';
 // Custom routes
 import { PrivateRoute } from '../PrivateRoute';
 import { RestrictedRoute } from '../RestrictedRoute';
@@ -10,10 +12,10 @@ import { refresh } from 'redux/auth/authOperations';
 // Layout
 import { Layout } from 'components/Layout/Layout';
 // Pages
-import { HomePage } from 'pages/HomePage/HomePage';
-import { ContactsPage } from 'pages/ContactsPage/ContactsPage';
-import { RegisterPage } from 'pages/RegisterPage/RegisterPage';
-import { LoginPage } from 'pages/LoginPage/LoginPage';
+const HomePage = lazyNamedModuleImport('HomePage');
+const ContactsPage = lazyNamedModuleImport('ContactsPage');
+const RegisterPage = lazyNamedModuleImport('RegisterPage');
+const LoginPage = lazyNamedModuleImport('LoginPage');
 
 export const App = () => {
   const dispatch = useDispatch();

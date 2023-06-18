@@ -7,6 +7,49 @@ const initialState = {
   user: { name: null, email: null },
   token: null,
   isLoggedIn: false,
+  isLoading: false,
+  error: null,
+};
+
+const isPendingAction = action => action.type.endsWith('/pending');
+
+const isRejectedAction = action => action.type.endsWith('/rejected');
+
+const handlePending = state => {
+  state.isLoading = true;
+  state.error = null;
+};
+
+const handleRejected = (state, action) => {
+  state.isLoading = false;
+  state.error = action.payload;
+};
+
+const handleRegisterFulfilled = (state, action) => {
+  state.isLoading = false;
+  state.user = action.payload.user;
+  state.token = action.payload.token;
+  state.isLoggedIn = true;
+};
+
+const handleLogInFulfilled = (state, action) => {
+  state.isLoading = false;
+  state.user = action.payload.user;
+  state.token = action.payload.token;
+  state.isLoggedIn = true;
+};
+
+const handleLogOutFulfilled = state => {
+  state.isLoading = false;
+  state.user = { name: null, email: null };
+  state.token = null;
+  state.isLoggedIn = false;
+};
+
+const handleRefreshFulfilled = (state, action) => {
+  state.isLoading = false;
+  state.user = action.payload;
+  state.isLoggedIn = true;
 };
 
 const authSlice = createSlice({
@@ -14,25 +57,12 @@ const authSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
-      .addCase(register.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
-        state.isLoggedIn = true;
-      })
-      .addCase(logIn.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
-        state.isLoggedIn = true;
-      })
-      .addCase(logOut.fulfilled, state => {
-        state.user = { name: null, email: null };
-        state.token = null;
-        state.isLoggedIn = false;
-      })
-      .addCase(refresh.fulfilled, (state, action) => {
-        state.user = action.payload;
-        state.isLoggedIn = true;
-      });
+      .addCase(register.fulfilled, handleRegisterFulfilled)
+      .addCase(logIn.fulfilled, handleLogInFulfilled)
+      .addCase(logOut.fulfilled, handleLogOutFulfilled)
+      .addCase(refresh.fulfilled, handleRefreshFulfilled)
+      .addMatcher(isPendingAction, handlePending)
+      .addMatcher(isRejectedAction, handleRejected);
   },
 });
 

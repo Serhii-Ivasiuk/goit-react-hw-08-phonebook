@@ -24,16 +24,19 @@ const handleRejected = (state, action) => {
 };
 
 const handleFetchContactsFulfilled = (state, action) => {
+  state.error = null;
   state.items = action.payload;
   state.isLoading = false;
 };
 
 const handleAddContactFulfilled = (state, action) => {
+  state.error = null;
   state.items.push(action.payload);
   state.isLoading = false;
 };
 
 const handleDeleteContactFulfilled = (state, action) => {
+  state.error = null;
   state.items = state.items.filter(item => item.id !== action.payload.id);
   state.isLoading = false;
 };

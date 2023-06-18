@@ -25,13 +25,13 @@ export const ContactList = () => {
       )}
 
       <List>
-        {filteredAndSortedContacts.map(({ id, name, phone }) => {
+        {filteredAndSortedContacts.map(({ id, name, number }) => {
           return (
             <ContactListItem
               key={id}
               id={id}
               contactName={name}
-              contactNumber={phone}
+              contactNumber={number}
             />
           );
         })}

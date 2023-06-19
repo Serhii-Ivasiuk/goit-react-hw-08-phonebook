@@ -1,7 +1,7 @@
 // Libs
 import { createSlice } from '@reduxjs/toolkit';
 // Redux operations
-import { register, logIn, logOut, refresh } from './authOperations';
+import { registerUser, logIn, logOut, refresh } from './authOperations';
 
 const initialState = {
   user: { name: null, email: null },
@@ -28,7 +28,7 @@ const handleRejected = (state, action) => {
   state.error = action.payload;
 };
 
-const handleRegisterFulfilled = (state, action) => {
+const handleRegisterUserFulfilled = (state, action) => {
   state.isLoading = false;
   state.user = action.payload.user;
   state.token = action.payload.token;
@@ -69,7 +69,7 @@ const authSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
-      .addCase(register.fulfilled, handleRegisterFulfilled)
+      .addCase(registerUser.fulfilled, handleRegisterUserFulfilled)
       .addCase(logIn.fulfilled, handleLogInFulfilled)
       .addCase(logOut.fulfilled, handleLogOutFulfilled)
       .addCase(refresh.fulfilled, handleRefreshFulfilled)

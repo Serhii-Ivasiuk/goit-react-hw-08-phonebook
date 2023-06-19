@@ -12,9 +12,11 @@ const initialState = {
   isRefreshing: false,
 };
 
-const isPendingAction = action => action.type.endsWith('/pending');
+const isPendingAction = action =>
+  action.type.endsWith('/pending') && action.type.includes('auth');
 
-const isRejectedAction = action => action.type.endsWith('/rejected');
+const isRejectedAction = action =>
+  action.type.endsWith('/rejected') && action.type.includes('auth');
 
 const handlePending = state => {
   state.isLoading = true;

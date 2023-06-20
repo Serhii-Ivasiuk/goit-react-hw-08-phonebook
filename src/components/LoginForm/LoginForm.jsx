@@ -23,7 +23,7 @@ const validationSchema = (() => {
     email: Yup.string()
       .required('Email is required.')
       .matches(emailRegExp, 'Email must be a valid email.'),
-    password: Yup.string().required('Password is required.'),
+    password: Yup.string().required('Password is required.').min(8),
   });
 })();
 

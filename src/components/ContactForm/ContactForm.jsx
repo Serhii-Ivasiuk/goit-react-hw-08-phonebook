@@ -15,7 +15,7 @@ import {
   Input,
   SubmitBtn,
   ValidationMessage,
-} from './ContactForm.styled';
+} from 'components/Common/FormsComponents.styled';
 
 const validationSchema = (() => {
   const nameRegExp =
@@ -26,6 +26,7 @@ const validationSchema = (() => {
   return Yup.object().shape({
     name: Yup.string()
       .required('Name is required')
+      .min(3, 'Name must be at least 3 letters long.')
       .matches(
         nameRegExp,
         'Name may contain only letters, apostrophe, dash and spaces.'
@@ -50,9 +51,9 @@ export const ContactForm = () => {
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
   const {
+    formState: { errors, isDirty, isValid },
     register,
     handleSubmit,
-    formState: { errors, isDirty, isValid },
     reset,
   } = useForm(formSettings);
 

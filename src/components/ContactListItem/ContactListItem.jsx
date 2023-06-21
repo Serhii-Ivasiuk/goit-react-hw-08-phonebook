@@ -14,7 +14,7 @@ export const ContactListItem = ({ id, contactName, contactNumber }) => {
   const handleRemoveContact = () => {
     setIsRemoving(true);
 
-    dispatch(deleteContact(id)).finally(() => {
+    dispatch(deleteContact({ id, contactName })).finally(() => {
       setIsRemoving(false);
     });
   };

@@ -54,7 +54,9 @@ export const ContactsPage = () => {
 
           {loading && <InfoMessage>Loading...</InfoMessage>}
 
-          {error && <ErrorMessage>{error}</ErrorMessage>}
+          {error && contacts.length === 0 && (
+            <ErrorMessage>{error}</ErrorMessage>
+          )}
 
           {!loading && !error && contacts.length === 0 && (
             <InfoMessage>

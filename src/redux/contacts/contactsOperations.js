@@ -1,5 +1,6 @@
 // Libs
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 // Services
 import {
   getContacts,
@@ -15,7 +16,8 @@ export const fetchContacts = createAsyncThunk(
     try {
       return await getContacts();
     } catch {
-      return thunkAPI.rejectWithValue(ERROR_MESSAGE);
+      toast.error(ERROR_MESSAGE);
+      return thunkAPI.rejectWithValue('Failed to load contacts.');
     }
   }
 );
@@ -24,20 +26,26 @@ export const addContact = createAsyncThunk(
   'contacts/addContact',
   async (newContact, thunkAPI) => {
     try {
-      return await addNewContact(newContact);
-    } catch {
-      return thunkAPI.rejectWithValue(ERROR_MESSAGE);
+      const response = await addNewContact(newContact);
+      toast.success(`Contact "${newContact.name}" is successfully added.`);
+      return response;
+    } catch (error) {
+      toast.error(ERROR_MESSAGE);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
 export const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
-  async (id, thunkAPI) => {
+  async ({ id, contactName }, thunkAPI) => {
     try {
-      return await removeContactById(id);
-    } catch {
-      return thunkAPI.rejectWithValue(ERROR_MESSAGE);
+      const response = await removeContactById(id);
+      toast.success(`Contact "${contactName}" is successfully deleted.`);
+      return response;
+    } catch (error) {
+      toast.error(ERROR_MESSAGE);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );

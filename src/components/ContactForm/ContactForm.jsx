@@ -2,6 +2,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { toast } from 'react-toastify';
 import * as Yup from 'yup';
 // Redux selectors
 import { getContacts } from 'redux/contacts/contactsSelectors';
@@ -64,11 +65,11 @@ export const ContactForm = () => {
     );
 
     if (isExistName) {
-      return alert(
+      return toast.info(
         `Contact with name "${formData.name}" is already in contacts`
       );
     } else if (isExistNumber) {
-      return alert(
+      return toast.info(
         `Number "${formData.number}" is already in contacts with name "${isExistNumber.name}"`
       );
     }

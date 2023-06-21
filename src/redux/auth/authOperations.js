@@ -62,7 +62,6 @@ export const refresh = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
     setAuthHeader(persistedToken);
     return await getCurrentUser();
   } catch (error) {
-    toast.error('Oops... Something went wrong :( Please try again later.');
     return thunkAPI.rejectWithValue(error.message);
   }
 });

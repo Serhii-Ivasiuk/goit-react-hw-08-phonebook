@@ -1,11 +1,15 @@
 // Libs
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
+// Redux selectors
+import { getIsLoading } from 'redux/auth/authSelectors';
 // Redux operations
 import { registerUser } from 'redux/auth/authOperations';
+// React components
+import { CenteredLoader } from 'components/Loaders/Loaders';
 // Styled components
 import {
   Form,
@@ -44,6 +48,7 @@ const formSettings = {
 };
 
 export const RegistrationForm = () => {
+  const isLoading = useSelector(getIsLoading);
   const dispatch = useDispatch();
 
   const {
@@ -108,7 +113,7 @@ export const RegistrationForm = () => {
       </Label>
 
       <SubmitBtn type="submit" disabled={!isValid || !isDirty}>
-        Register
+        {isLoading ? <CenteredLoader /> : 'Register'}
       </SubmitBtn>
     </Form>
   );

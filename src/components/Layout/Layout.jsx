@@ -1,8 +1,9 @@
 // Libs
 import { Suspense } from 'react';
+import { Outlet } from 'react-router-dom';
 // React components
 import { AppBar } from 'components/AppBar/AppBar';
-import { Outlet } from 'react-router-dom';
+import { PageLoader } from 'components/Loaders/Loaders';
 // Styled components
 import { Container, LayoutWrap } from './Layout.styled';
 
@@ -16,7 +17,7 @@ export const Layout = () => {
       </header>
       <main>
         <Container>
-          <Suspense fallback={<h1>Suspense loading...</h1>}>
+          <Suspense fallback={<PageLoader />}>
             <Outlet />
           </Suspense>
         </Container>

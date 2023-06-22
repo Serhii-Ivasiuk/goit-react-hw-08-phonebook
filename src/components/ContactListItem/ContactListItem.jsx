@@ -1,12 +1,14 @@
 // Libs
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 // Redux operations
 import { deleteContact } from 'redux/contacts/contactsOperations';
+// react components
+import { CenteredLoader } from 'components/Loaders/Loaders';
 // Styled components
 import { ListItem, Text, Number, RemoveBtn } from './ContactListItem.styled';
-import { useDispatch } from 'react-redux';
-import { useState } from 'react';
 
 export const ContactListItem = ({ id, contactName, contactNumber }) => {
   const [isRemoving, setIsRemoving] = useState(false);
@@ -39,7 +41,7 @@ export const ContactListItem = ({ id, contactName, contactNumber }) => {
         disabled={isRemoving}
         onClick={handleRemoveContact}
       >
-        Remove
+        {isRemoving ? <CenteredLoader /> : 'Remove'}
       </RemoveBtn>
     </ListItem>
   );

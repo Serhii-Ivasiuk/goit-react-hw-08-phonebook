@@ -44,7 +44,8 @@ export const Input = styled.input`
 
 export const SubmitBtn = styled.button`
   height: 32px;
-  padding: 4px 16px;
+  padding: 4px 12px;
+  min-width: 110px;
   text-transform: uppercase;
   font-weight: 700;
   background-color: #008000;

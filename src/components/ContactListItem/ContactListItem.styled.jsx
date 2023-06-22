@@ -23,6 +23,7 @@ export const Number = styled.span`
 export const RemoveBtn = styled.button`
   padding: 0 16px 0;
   height: 100%;
+  min-width: 100px;
   font-weight: 700;
   text-transform: uppercase;
   color: #ffffff;

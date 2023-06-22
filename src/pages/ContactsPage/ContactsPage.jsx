@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import { ContactForm } from 'components/ContactForm/ContactForm';
 import { Filter } from 'components/Filter/Filter';
 import { ContactList } from 'components/ContactList/ContactList';
+import { CenteredLoader } from 'components/Loaders/Loaders';
 // Redux selectors
 import {
   getContacts,
@@ -27,7 +28,7 @@ import {
 
 export const ContactsPage = () => {
   const contacts = useSelector(getContacts);
-  const loading = useSelector(getIsLoading);
+  const isLoading = useSelector(getIsLoading);
   const error = useSelector(getError);
 
   const dispatch = useDispatch();
@@ -57,13 +58,13 @@ export const ContactsPage = () => {
             </>
           )}
 
-          {loading && <InfoMessage>Loading...</InfoMessage>}
+          {contacts.length === 0 && isLoading && <CenteredLoader />}
 
           {error && contacts.length === 0 && (
             <ErrorMessage>{error}</ErrorMessage>
           )}
 
-          {!loading && !error && contacts.length === 0 && (
+          {!isLoading && !error && contacts.length === 0 && (
             <InfoMessage>
               There is no contacts yet. Use the form above to add your first
               contact.

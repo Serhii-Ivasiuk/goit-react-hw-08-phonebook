@@ -5,6 +5,7 @@ export const LayoutWrap = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
+  padding-bottom: 16px;
 `;
 
 export const Container = styled.div`

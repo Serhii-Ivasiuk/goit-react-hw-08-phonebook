@@ -6,8 +6,11 @@ import { toast } from 'react-toastify';
 import * as Yup from 'yup';
 // Redux selectors
 import { getContacts } from 'redux/contacts/contactsSelectors';
+import { getIsLoading } from 'redux/contacts/contactsSelectors';
 // Redux operations
 import { addContact } from 'redux/contacts/contactsOperations';
+// React components
+import { CenteredLoader } from 'components/Loaders/Loaders';
 // Styled components
 import {
   Form,
@@ -50,6 +53,7 @@ const formSettings = {
 
 export const ContactForm = () => {
   const contacts = useSelector(getContacts);
+  const isLoading = useSelector(getIsLoading);
   const dispatch = useDispatch();
   const {
     formState: { errors, isDirty, isValid },
@@ -116,7 +120,7 @@ export const ContactForm = () => {
       </Label>
 
       <SubmitBtn type="submit" disabled={!isValid || !isDirty}>
-        Add contact
+        {isDirty && isLoading ? <CenteredLoader /> : 'Add contact'}
       </SubmitBtn>
     </Form>
   );

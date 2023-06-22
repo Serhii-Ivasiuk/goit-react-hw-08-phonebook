@@ -18,6 +18,7 @@ export const UserName = styled.p`
 export const LogOutBtn = styled.button`
   padding: 0 16px 0;
   height: 100%;
+  min-width: 90px;
   font-weight: 700;
   color: #ffffff;
   border: none;

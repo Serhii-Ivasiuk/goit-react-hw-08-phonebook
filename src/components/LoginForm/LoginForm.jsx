@@ -1,5 +1,6 @@
 // Libs
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
@@ -44,7 +45,11 @@ export const LoginForm = () => {
   } = useForm(formSettings);
 
   const onSubmit = formData => {
-    dispatch(logIn(formData));
+    dispatch(logIn(formData))
+      .unwrap()
+      .then(response => toast.success(`Wellcome, ${response.user.name}!`))
+      .catch(() => toast.error('Login error - wrong email or password.'));
+
     reset();
   };
 

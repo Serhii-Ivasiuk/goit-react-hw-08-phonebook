@@ -1,7 +1,6 @@
 // Libs
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { toast } from 'react-toastify';
 // Services
 import { signUp, signIn, signOut, getCurrentUser } from 'services/userApi';
 
@@ -18,12 +17,10 @@ export const registerUser = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const response = await signUp(credentials);
-      toast.success(`User "${response.user.name}" is successfully registered.`);
       setAuthHeader(response.token);
       return response;
     } catch (error) {
-      toast.error('Registration error, please try again.');
-      return thunkAPI.rejectWithValue(error);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -31,12 +28,10 @@ export const registerUser = createAsyncThunk(
 export const logIn = createAsyncThunk('auth/logIn', async (user, thunkAPI) => {
   try {
     const response = await signIn(user);
-    toast.success(`Wellcome, ${response.user.name}!`);
     setAuthHeader(response.token);
     return response;
   } catch (error) {
-    toast.error('Login error - wrong email or password.');
-    return thunkAPI.rejectWithValue(error);
+    return thunkAPI.rejectWithValue(error.message);
   }
 });
 
@@ -45,8 +40,7 @@ export const logOut = createAsyncThunk('auth/logOut', async (_, thunkAPI) => {
     await signOut();
     clearAuthHeader();
   } catch (error) {
-    toast.error('Logout error, please try again.');
-    return thunkAPI.rejectWithValue(error);
+    return thunkAPI.rejectWithValue(error.message);
   }
 });
 

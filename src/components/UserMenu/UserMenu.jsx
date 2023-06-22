@@ -1,5 +1,6 @@
 // Libs
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 // Redux selectors
 import { getUserName } from 'redux/auth/authSelectors';
 // Styled components
@@ -11,7 +12,10 @@ export const UserMenu = () => {
   const dispatch = useDispatch();
 
   const handeleLogOut = () => {
-    dispatch(logOut());
+    dispatch(logOut())
+      .unwrap()
+      .then(() => toast.success('Logout succesfull.'))
+      .catch(() => toast.error('Logout error, please try again.'));
   };
 
   return (

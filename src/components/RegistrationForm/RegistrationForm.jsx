@@ -1,5 +1,6 @@
 // Libs
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
@@ -53,7 +54,15 @@ export const RegistrationForm = () => {
   } = useForm(formSettings);
 
   const onSubmit = formData => {
-    dispatch(registerUser(formData));
+    dispatch(registerUser(formData))
+      .unwrap()
+      .then(response =>
+        toast.success(
+          `User "${response.user.name}" is successfully registered.`
+        )
+      )
+      .catch(() => toast.error('Registration error, please try again.'));
+
     reset();
   };
 

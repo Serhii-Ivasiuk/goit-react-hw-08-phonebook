@@ -1,6 +1,7 @@
 // Libs
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 // React components
 import { ContactForm } from 'components/ContactForm/ContactForm';
 import { Filter } from 'components/Filter/Filter';
@@ -32,7 +33,11 @@ export const ContactsPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(fetchContacts())
+      .unwrap()
+      .catch(() =>
+        toast.error('Oops... Something went wrong :( Please try again later.')
+      );
   }, [dispatch]);
 
   return (

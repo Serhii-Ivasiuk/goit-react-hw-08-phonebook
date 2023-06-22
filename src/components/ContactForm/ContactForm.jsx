@@ -74,7 +74,14 @@ export const ContactForm = () => {
       );
     }
 
-    dispatch(addContact(formData));
+    dispatch(addContact(formData))
+      .unwrap()
+      .then(response =>
+        toast.success(`Contact "${response.name}" is successfully added.`)
+      )
+      .catch(() =>
+        toast.error('Oops... Something went wrong :( Please try again later.')
+      );
 
     reset();
 

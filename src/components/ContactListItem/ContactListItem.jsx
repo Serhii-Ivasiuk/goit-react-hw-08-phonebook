@@ -1,4 +1,5 @@
 // Libs
+import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 // Redux operations
 import { deleteContact } from 'redux/contacts/contactsOperations';
@@ -14,9 +15,17 @@ export const ContactListItem = ({ id, contactName, contactNumber }) => {
   const handleRemoveContact = () => {
     setIsRemoving(true);
 
-    dispatch(deleteContact({ id, contactName })).finally(() => {
-      setIsRemoving(false);
-    });
+    dispatch(deleteContact({ id }))
+      .unwrap()
+      .then(response =>
+        toast.success(`Contact "${response.name}" is successfully removed.`)
+      )
+      .catch(() =>
+        toast.error('Oops... Something went wrong :( Please try again later.')
+      )
+      .finally(() => {
+        setIsRemoving(false);
+      });
   };
 
   return (

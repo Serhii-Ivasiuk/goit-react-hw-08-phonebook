@@ -31,4 +31,9 @@ export const LogOutBtn = styled.button`
   &:focus {
     background-color: #457575;
   }
+
+  &:disabled {
+    cursor: initial;
+    background-color: #505050;
+  }
 `;

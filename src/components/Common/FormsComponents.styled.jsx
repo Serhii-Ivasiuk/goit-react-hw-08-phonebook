@@ -61,7 +61,7 @@ export const SubmitBtn = styled.button`
     background-color: #006f00;
   }
 
-  :disabled {
+  &:disabled {
     cursor: initial;
     background-color: #505050;
   }

@@ -112,7 +112,7 @@ export const RegistrationForm = () => {
         )}
       </Label>
 
-      <SubmitBtn type="submit" disabled={!isValid || !isDirty}>
+      <SubmitBtn type="submit" disabled={!isValid || !isDirty || isLoading}>
         {isLoading ? <CenteredLoader /> : 'Register'}
       </SubmitBtn>
     </Form>

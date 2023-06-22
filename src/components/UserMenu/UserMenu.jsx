@@ -24,7 +24,7 @@ export const UserMenu = () => {
   return (
     <UserMenuWrap>
       <UserName>{userName}</UserName>
-      <LogOutBtn type="button" onClick={handeleLogOut}>
+      <LogOutBtn type="button" onClick={handeleLogOut} disabled={isLoading}>
         {isLoading ? <CenteredLoader /> : 'Log out'}
       </LogOutBtn>
     </UserMenuWrap>

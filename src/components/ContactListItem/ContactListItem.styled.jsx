@@ -39,6 +39,7 @@ export const RemoveBtn = styled.button`
   }
 
   &:disabled {
+    cursor: initial;
     background-color: #505050;
   }
 `;

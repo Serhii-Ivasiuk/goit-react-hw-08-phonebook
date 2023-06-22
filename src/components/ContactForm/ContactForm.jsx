@@ -119,7 +119,7 @@ export const ContactForm = () => {
         )}
       </Label>
 
-      <SubmitBtn type="submit" disabled={!isValid || !isDirty}>
+      <SubmitBtn type="submit" disabled={!isValid || !isDirty || isLoading}>
         {isDirty && isLoading ? <CenteredLoader /> : 'Add contact'}
       </SubmitBtn>
     </Form>

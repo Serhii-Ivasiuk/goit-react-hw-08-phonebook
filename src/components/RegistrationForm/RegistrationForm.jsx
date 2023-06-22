@@ -56,14 +56,13 @@ export const RegistrationForm = () => {
   const onSubmit = formData => {
     dispatch(registerUser(formData))
       .unwrap()
-      .then(response =>
+      .then(response => {
         toast.success(
           `User "${response.user.name}" is successfully registered.`
-        )
-      )
+        );
+        reset();
+      })
       .catch(() => toast.error('Registration error, please try again.'));
-
-    reset();
   };
 
   return (

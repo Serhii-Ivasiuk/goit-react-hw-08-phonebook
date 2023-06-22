@@ -76,14 +76,13 @@ export const ContactForm = () => {
 
     dispatch(addContact(formData))
       .unwrap()
-      .then(response =>
-        toast.success(`Contact "${response.name}" is successfully added.`)
-      )
+      .then(response => {
+        toast.success(`Contact "${response.name}" is successfully added.`);
+        reset();
+      })
       .catch(() =>
         toast.error('Oops... Something went wrong :( Please try again later.')
       );
-
-    reset();
 
     document.activeElement.blur();
   };

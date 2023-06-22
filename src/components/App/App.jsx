@@ -10,7 +10,7 @@ import { lazyNamedModuleImport } from 'helpers/lazyModuleImport';
 import { PrivateRoute } from '../PrivateRoute';
 import { RestrictedRoute } from '../RestrictedRoute';
 // Redux operations
-import { refresh } from 'redux/auth/authOperations';
+import { refreshUser } from 'redux/auth/authOperations';
 // Layout
 import { Layout } from 'components/Layout/Layout';
 // Pages
@@ -23,7 +23,7 @@ export const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(refresh());
+    dispatch(refreshUser());
   }, [dispatch]);
 
   return (

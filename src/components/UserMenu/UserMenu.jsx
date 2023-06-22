@@ -5,14 +5,14 @@ import { toast } from 'react-toastify';
 import { getUserName } from 'redux/auth/authSelectors';
 // Styled components
 import { LogOutBtn, UserName, UserMenuWrap } from './UserMenu.styled';
-import { logOut } from 'redux/auth/authOperations';
+import { logOutUser } from 'redux/auth/authOperations';
 
 export const UserMenu = () => {
   const userName = useSelector(getUserName);
   const dispatch = useDispatch();
 
   const handeleLogOut = () => {
-    dispatch(logOut())
+    dispatch(logOutUser())
       .unwrap()
       .then(() => toast.success('Logout succesfull.'))
       .catch(() => toast.error('Logout error, please try again.'));

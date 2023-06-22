@@ -1,7 +1,12 @@
 // Libs
 import { createSlice } from '@reduxjs/toolkit';
 // Redux operations
-import { registerUser, logIn, logOut, refresh } from './authOperations';
+import {
+  registerUser,
+  logInUser,
+  logOutUser,
+  refreshUser,
+} from './authOperations';
 
 const initialState = {
   user: { name: null, email: null },
@@ -70,11 +75,11 @@ const authSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(registerUser.fulfilled, handleRegisterUserFulfilled)
-      .addCase(logIn.fulfilled, handleLogInFulfilled)
-      .addCase(logOut.fulfilled, handleLogOutFulfilled)
-      .addCase(refresh.fulfilled, handleRefreshFulfilled)
-      .addCase(refresh.pending, handleRefreshPending)
-      .addCase(refresh.rejected, handleRefreshRejected)
+      .addCase(logInUser.fulfilled, handleLogInFulfilled)
+      .addCase(logOutUser.fulfilled, handleLogOutFulfilled)
+      .addCase(refreshUser.fulfilled, handleRefreshFulfilled)
+      .addCase(refreshUser.pending, handleRefreshPending)
+      .addCase(refreshUser.rejected, handleRefreshRejected)
       .addMatcher(isPendingAction, handlePending)
       .addMatcher(isRejectedAction, handleRejected);
   },

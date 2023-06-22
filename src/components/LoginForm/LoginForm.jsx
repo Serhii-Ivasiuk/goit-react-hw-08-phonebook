@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 // Redux operations
-import { logIn } from 'redux/auth/authOperations';
+import { logInUser } from 'redux/auth/authOperations';
 // Styled components
 import {
   Form,
@@ -45,12 +45,13 @@ export const LoginForm = () => {
   } = useForm(formSettings);
 
   const onSubmit = formData => {
-    dispatch(logIn(formData))
+    dispatch(logInUser(formData))
       .unwrap()
-      .then(response => toast.success(`Wellcome, ${response.user.name}!`))
+      .then(response => {
+        toast.success(`Wellcome, ${response.user.name}!`);
+        reset();
+      })
       .catch(() => toast.error('Login error - wrong email or password.'));
-
-    reset();
   };
 
   return (

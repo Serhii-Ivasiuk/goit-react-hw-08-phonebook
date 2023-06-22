@@ -17,7 +17,7 @@ export const Filter = () => {
 
   return (
     <Label>
-      <InputHeading>Find contacts by name</InputHeading>
+      <InputHeading>Search contacts by name or number</InputHeading>
       <Input
         type="text"
         name="filter"

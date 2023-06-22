@@ -13,7 +13,11 @@ export const ContactList = () => {
   const filter = useSelector(getFilter);
 
   const filteredAndSortedContacts = contacts
-    .filter(item => item.name.toLowerCase().includes(filter.toLowerCase()))
+    .filter(
+      item =>
+        item.name.toLowerCase().includes(filter.toLowerCase()) ||
+        item.number.includes(filter)
+    )
     .sort((a, b) => a.name.localeCompare(b.name));
 
   return (

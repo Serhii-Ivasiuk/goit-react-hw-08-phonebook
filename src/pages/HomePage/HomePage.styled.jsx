@@ -18,8 +18,12 @@ export const Hero = styled.div`
   height: 360px;
   width: 100%;
   padding: 20px;
+  margin-bottom: 16px;
   color: #ffffff;
   border-radius: 16px;
+  border: 1px solid #505050;
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
   background-color: #c4c4c4;
   background-size: cover;
   background-repeat: no-repeat;
@@ -149,6 +153,8 @@ export const TechList = styled.ul`
   border: 1px solid #505050;
   background-color: #ffffff;
   border-radius: 16px;
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 `;
 
 export const TechLink = styled.a`

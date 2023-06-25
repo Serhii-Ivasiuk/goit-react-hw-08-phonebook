@@ -1,6 +1,12 @@
 // React components
 import { LoginForm } from 'components/LoginForm/LoginForm';
+// Styled components
+import { PageWrap } from 'components/Common/PagesStyles';
 
 export const LoginPage = () => {
-  return <LoginForm />;
+  return (
+    <PageWrap>
+      <LoginForm />
+    </PageWrap>
+  );
 };

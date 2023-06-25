@@ -42,6 +42,9 @@ export const Name = styled.p`
 
 export const Number = styled.p`
   font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   @media screen and (max-width: 480px) {
     font-size: 12px;

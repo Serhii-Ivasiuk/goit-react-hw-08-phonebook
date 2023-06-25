@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/616.01b9cc4f.chunk.js","mappings":"0MAGaA,E,QAAWC,EAAAA,IAAH,+E","sources":["components/Common/PagesStyles.jsx"],"sourcesContent":["// Libs\nimport styled from '@emotion/styled';\n\nexport const PageWrap = styled.div`\n  width: 100%;\n  max-width: 480px;\n  margin: 0 auto;\n`;\n"],"names":["PageWrap","styled"],"sourceRoot":""}

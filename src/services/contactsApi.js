@@ -7,5 +7,8 @@ export const getContacts = () =>
 export const addNewContact = newContact =>
   axios.post('/contacts', newContact).then(response => response.data);
 
-export const removeContactById = id =>
+export const removeContact = id =>
   axios.delete(`/contacts/${id}`).then(response => response.data);
+
+export const updateContact = (id, editedContact) =>
+  axios.patch(`/contacts/${id}`, editedContact).then(response => response.data);

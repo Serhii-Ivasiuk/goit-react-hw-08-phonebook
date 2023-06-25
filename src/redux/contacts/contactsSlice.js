@@ -1,7 +1,12 @@
 // Libs
 import { createSlice } from '@reduxjs/toolkit';
 // Redux operations
-import { fetchContacts, addContact, deleteContact } from './contactsOperations';
+import {
+  fetchContacts,
+  addContact,
+  deleteContact,
+  editContact,
+} from './contactsOperations';
 
 const initialState = {
   items: [],
@@ -43,6 +48,18 @@ const handleDeleteContactFulfilled = (state, action) => {
   state.isLoading = false;
 };
 
+const handleEditContactFulfilled = (state, action) => {
+  state.error = null;
+  state.items = state.items.map(item => {
+    if (item.id === action.payload.id) {
+      return (item = action.payload);
+    } else {
+      return item;
+    }
+  });
+  state.isLoading = false;
+};
+
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState,
@@ -51,6 +68,7 @@ const contactsSlice = createSlice({
       .addCase(fetchContacts.fulfilled, handleFetchContactsFulfilled)
       .addCase(addContact.fulfilled, handleAddContactFulfilled)
       .addCase(deleteContact.fulfilled, handleDeleteContactFulfilled)
+      .addCase(editContact.fulfilled, handleEditContactFulfilled)
       .addMatcher(isPendingAction, handlePending)
       .addMatcher(isRejectedAction, handleRejected);
   },

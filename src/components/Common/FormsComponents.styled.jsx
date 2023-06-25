@@ -10,6 +10,9 @@ export const Form = styled.form`
   padding: 16px;
   border: 1px solid #505050;
   border-radius: 12px;
+  background-color: #f8f8ff;
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 `;
 
 export const Label = styled.label`

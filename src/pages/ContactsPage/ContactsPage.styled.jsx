@@ -6,6 +6,12 @@ export const ContactsPageWrap = styled.div`
   flex-direction: column;
   gap: 16px;
   height: 100%;
+  width: 100%;
+
+  @media screen and (min-width: 768px) {
+    max-width: 768px;
+    margin: 0 auto;
+  }
 `;
 
 export const Section = styled.div`
@@ -29,6 +35,8 @@ export const ContactsWrapper = styled.div`
   border: 1px solid #505050;
   padding: 16px;
   border-radius: 12px;
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 `;
 
 export const InfoMessage = styled.p`

@@ -6,5 +6,4 @@ export const AppBarWrap = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 4px 0;
-  border-bottom: 1px solid black;
 `;

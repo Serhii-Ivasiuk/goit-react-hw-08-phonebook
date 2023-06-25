@@ -2,22 +2,43 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
+import { ImPhone, ImCross, ImPencil } from 'react-icons/im';
 import PropTypes from 'prop-types';
 // Redux operations
 import { deleteContact } from 'redux/contacts/contactsOperations';
-// react components
+// React components
 import { CenteredLoader } from 'components/Loaders/Loaders';
 // Styled components
-import { ListItem, Text, Number, RemoveBtn } from './ContactListItem.styled';
+import {
+  ListItem,
+  Name,
+  Number,
+  ActionsWrap,
+  CallLink,
+  EditBtn,
+  RemoveBtn,
+  ContactWrap,
+} from './ContactListItem.styled';
+import { EditContactForm } from 'components/EditContactForm/EditContactForm';
+import { Modal } from 'components/Modal/Modal';
 
 export const ContactListItem = ({ id, contactName, contactNumber }) => {
   const [isRemoving, setIsRemoving] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
+
+  const handleModalOpen = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
 
   const handleRemoveContact = () => {
     setIsRemoving(true);
 
-    dispatch(deleteContact({ id }))
+    dispatch(deleteContact(id))
       .unwrap()
       .then(response =>
         toast.success(`Contact "${response.name}" is successfully removed.`)
@@ -31,19 +52,43 @@ export const ContactListItem = ({ id, contactName, contactNumber }) => {
   };
 
   return (
-    <ListItem>
-      <Text>
-        {contactName}: <Number>{contactNumber}</Number>
-      </Text>
+    <>
+      <ListItem>
+        <ContactWrap>
+          <Name>{contactName}:</Name>
+          <Number>{contactNumber}</Number>
+        </ContactWrap>
 
-      <RemoveBtn
-        type="button"
-        disabled={isRemoving}
-        onClick={handleRemoveContact}
-      >
-        {isRemoving ? <CenteredLoader /> : 'Remove'}
-      </RemoveBtn>
-    </ListItem>
+        <ActionsWrap>
+          <CallLink href={`tel:${contactNumber}`}>
+            <ImPhone />
+          </CallLink>
+
+          <EditBtn type="button" onClick={handleModalOpen}>
+            <ImPencil />
+          </EditBtn>
+
+          <RemoveBtn
+            type="button"
+            disabled={isRemoving}
+            onClick={handleRemoveContact}
+          >
+            {isRemoving ? <CenteredLoader /> : <ImCross />}
+          </RemoveBtn>
+        </ActionsWrap>
+      </ListItem>
+
+      {isModalOpen && (
+        <Modal handleModalClose={handleModalClose}>
+          <EditContactForm
+            id={id}
+            contactName={contactName}
+            contactNumber={contactNumber}
+            handleModalClose={handleModalClose}
+          />
+        </Modal>
+      )}
+    </>
   );
 };
 

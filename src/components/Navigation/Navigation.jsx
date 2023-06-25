@@ -4,7 +4,7 @@ import { ImHome, ImProfile } from 'react-icons/im';
 // Redux selectors
 import { getIsLoggedIn } from 'redux/auth/authSelectors';
 // Styled components
-import { NavigationList, StyledNavLink } from './Navigation.styled';
+import { NavigationList, StyledNavLink, Text } from './Navigation.styled';
 
 export const Navigation = () => {
   const isLoggedIn = useSelector(getIsLoggedIn);
@@ -15,14 +15,14 @@ export const Navigation = () => {
         <li>
           <StyledNavLink to="/">
             <ImHome />
-            Home
+            <Text>Home</Text>
           </StyledNavLink>
         </li>
         {isLoggedIn && (
           <li>
             <StyledNavLink to="/contacts">
               <ImProfile />
-              Contacts
+              <Text>Contacts</Text>
             </StyledNavLink>
           </li>
         )}

@@ -19,7 +19,6 @@ export const ListItem = styled.li`
 export const ContactWrap = styled.div`
   display: flex;
   gap: 12px;
-  margin-right: 12px;
   padding: 8px 16px;
   overflow: hidden;
 
@@ -32,6 +31,9 @@ export const ContactWrap = styled.div`
 export const Name = styled.p`
   font-weight: 500;
   line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   @media screen and (max-width: 480px) {
     flex-direction: column;

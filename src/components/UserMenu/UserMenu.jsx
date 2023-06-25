@@ -1,13 +1,19 @@
 // Libs
 import { useDispatch, useSelector } from 'react-redux';
-import { ImUser } from 'react-icons/im';
+import { ImExit, ImUser } from 'react-icons/im';
 import { toast } from 'react-toastify';
 // Redux selectors
 import { getIsLoading, getUserName } from 'redux/auth/authSelectors';
 // React components
 import { CenteredLoader } from 'components/Loaders/Loaders';
 // Styled components
-import { LogOutBtn, UserName, UserMenuWrap } from './UserMenu.styled';
+import {
+  LogOutBtn,
+  UserName,
+  UserMenuWrap,
+  LogOutText,
+  User,
+} from './UserMenu.styled';
 import { logOutUser } from 'redux/auth/authOperations';
 
 export const UserMenu = () => {
@@ -24,12 +30,19 @@ export const UserMenu = () => {
 
   return (
     <UserMenuWrap>
-      <UserName>
-        <ImUser />
-        {userName}
-      </UserName>
+      <User>
+        <ImUser size={16} />
+        <UserName>{userName}</UserName>
+      </User>
+
       <LogOutBtn type="button" onClick={handeleLogOut} disabled={isLoading}>
-        {isLoading ? <CenteredLoader /> : 'Log out'}
+        {isLoading && <CenteredLoader />}
+        {!isLoading && (
+          <>
+            <ImExit />
+            <LogOutText>Log out</LogOutText>
+          </>
+        )}
       </LogOutBtn>
     </UserMenuWrap>
   );

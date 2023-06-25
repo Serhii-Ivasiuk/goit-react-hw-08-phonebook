@@ -10,8 +10,9 @@ export const NavigationList = styled.ul`
 
 export const StyledNavLink = styled(NavLink)`
   display: flex;
-  gap: 8px;
   align-items: center;
+  gap: 8px;
+  height: 42px;
   padding: 12px 8px;
   text-align: center;
   text-transform: uppercase;
@@ -25,5 +26,11 @@ export const StyledNavLink = styled(NavLink)`
   &:hover,
   &:focus {
     color: #ffc800;
+  }
+`;
+
+export const Text = styled.span`
+  @media screen and (max-width: 620px) {
+    display: none;
   }
 `;

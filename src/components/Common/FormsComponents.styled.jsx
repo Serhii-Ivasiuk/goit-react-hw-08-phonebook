@@ -59,16 +59,20 @@ export const SubmitBtn = styled.button`
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 250ms linear;
+  transition: background-color 250ms linear,
+    box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover,
   &:focus {
     background-color: #006f00;
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+      0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
   }
 
   &:disabled {
     cursor: initial;
     background-color: #505050;
+    box-shadow: none;
   }
 `;
 

@@ -1,5 +1,6 @@
 // Libs
 import { useDispatch, useSelector } from 'react-redux';
+import { ImUser } from 'react-icons/im';
 import { toast } from 'react-toastify';
 // Redux selectors
 import { getIsLoading, getUserName } from 'redux/auth/authSelectors';
@@ -23,7 +24,10 @@ export const UserMenu = () => {
 
   return (
     <UserMenuWrap>
-      <UserName>{userName}</UserName>
+      <UserName>
+        <ImUser />
+        {userName}
+      </UserName>
       <LogOutBtn type="button" onClick={handeleLogOut} disabled={isLoading}>
         {isLoading ? <CenteredLoader /> : 'Log out'}
       </LogOutBtn>

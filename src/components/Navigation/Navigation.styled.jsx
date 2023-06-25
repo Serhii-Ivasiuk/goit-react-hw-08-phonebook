@@ -9,7 +9,9 @@ export const NavigationList = styled.ul`
 `;
 
 export const StyledNavLink = styled(NavLink)`
-  display: block;
+  display: flex;
+  gap: 8px;
+  align-items: center;
   padding: 12px 8px;
   text-align: center;
   text-transform: uppercase;

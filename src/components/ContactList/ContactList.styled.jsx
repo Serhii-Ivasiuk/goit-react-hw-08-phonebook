@@ -2,6 +2,7 @@
 import styled from '@emotion/styled';
 
 export const InfoMessage = styled.p`
+  height: 48px;
   font-weight: 700;
   text-align: center;
   color: #505050;

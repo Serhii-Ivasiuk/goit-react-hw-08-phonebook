@@ -12,6 +12,9 @@ export const UserMenuWrap = styled.div`
   overflow: hidden;
 `;
 export const UserName = styled.p`
+  display: flex;
+  gap: 8px;
+  align-items: center;
   font-weight: 700;
 `;
 

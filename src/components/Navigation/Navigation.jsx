@@ -1,5 +1,6 @@
 // Libs
 import { useSelector } from 'react-redux';
+import { ImHome, ImProfile } from 'react-icons/im';
 // Redux selectors
 import { getIsLoggedIn } from 'redux/auth/authSelectors';
 // Styled components
@@ -12,11 +13,17 @@ export const Navigation = () => {
     <nav>
       <NavigationList>
         <li>
-          <StyledNavLink to="/">Home</StyledNavLink>
+          <StyledNavLink to="/">
+            <ImHome />
+            Home
+          </StyledNavLink>
         </li>
         {isLoggedIn && (
           <li>
-            <StyledNavLink to="/contacts">Contacts</StyledNavLink>
+            <StyledNavLink to="/contacts">
+              <ImProfile />
+              Contacts
+            </StyledNavLink>
           </li>
         )}
       </NavigationList>

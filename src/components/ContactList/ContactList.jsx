@@ -28,18 +28,20 @@ export const ContactList = () => {
         </InfoMessage>
       )}
 
-      <List>
-        {filteredAndSortedContacts.map(({ id, name, number }) => {
-          return (
-            <ContactListItem
-              key={id}
-              id={id}
-              contactName={name}
-              contactNumber={number}
-            />
-          );
-        })}
-      </List>
+      {filteredAndSortedContacts.length !== 0 && (
+        <List>
+          {filteredAndSortedContacts.map(({ id, name, number }) => {
+            return (
+              <ContactListItem
+                key={id}
+                id={id}
+                contactName={name}
+                contactNumber={number}
+              />
+            );
+          })}
+        </List>
+      )}
     </>
   );
 };

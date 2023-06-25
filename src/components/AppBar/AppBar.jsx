@@ -1,7 +1,7 @@
 // Libs
 import { useSelector } from 'react-redux';
 // Redux selectors
-import { getIsLoggedIn, getIsRefreshing } from 'redux/auth/authSelectors';
+import { selectIsLoggedIn, selectIsRefreshing } from 'redux/auth/authSelectors';
 // React components
 import { Navigation } from 'components/Navigation/Navigation';
 import { AuthNav } from 'components/AuthNav/AuthNav';
@@ -10,8 +10,8 @@ import { UserMenu } from 'components/UserMenu/UserMenu';
 import { AppBarWrap } from './AppBar.styled';
 
 export const AppBar = () => {
-  const isLoggedIn = useSelector(getIsLoggedIn);
-  const isRefreshing = useSelector(getIsRefreshing);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const isRefreshing = useSelector(selectIsRefreshing);
 
   return (
     <AppBarWrap>

@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 // Redux selectors
-import { getIsLoading } from 'redux/auth/authSelectors';
+import { selectIsLoading } from 'redux/auth/authSelectors';
 // Redux operations
 import { logInUser } from 'redux/auth/authOperations';
 // React components
@@ -39,7 +39,7 @@ const formSettings = {
 };
 
 export const LoginForm = () => {
-  const isLoading = useSelector(getIsLoading);
+  const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
 
   const {

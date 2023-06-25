@@ -30,7 +30,6 @@ export const ContactWrap = styled.div`
 
 export const Name = styled.p`
   font-weight: 500;
-  line-height: 1;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -43,7 +42,6 @@ export const Name = styled.p`
 
 export const Number = styled.p`
   font-weight: 400;
-  line-height: 1;
 
   @media screen and (max-width: 480px) {
     font-size: 12px;

@@ -9,9 +9,9 @@ import { ContactList } from 'components/ContactList/ContactList';
 import { CenteredLoader } from 'components/Loaders/Loaders';
 // Redux selectors
 import {
-  getContacts,
-  getError,
-  getIsLoading,
+  selectContacts,
+  selectError,
+  selectIsLoading,
 } from 'redux/contacts/contactsSelectors';
 // Redux operations
 import { fetchContacts } from 'redux/contacts/contactsOperations';
@@ -27,9 +27,9 @@ import {
 } from './ContactsPage.styled';
 
 export const ContactsPage = () => {
-  const contacts = useSelector(getContacts);
-  const isLoading = useSelector(getIsLoading);
-  const error = useSelector(getError);
+  const contacts = useSelector(selectContacts);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
 
   const dispatch = useDispatch();
 

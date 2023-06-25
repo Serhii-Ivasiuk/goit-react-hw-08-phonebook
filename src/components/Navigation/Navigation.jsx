@@ -2,12 +2,12 @@
 import { useSelector } from 'react-redux';
 import { ImHome, ImProfile } from 'react-icons/im';
 // Redux selectors
-import { getIsLoggedIn } from 'redux/auth/authSelectors';
+import { selectIsLoggedIn } from 'redux/auth/authSelectors';
 // Styled components
 import { NavigationList, StyledNavLink, Text } from './Navigation.styled';
 
 export const Navigation = () => {
-  const isLoggedIn = useSelector(getIsLoggedIn);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   return (
     <nav>

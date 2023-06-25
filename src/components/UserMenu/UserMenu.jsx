@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ImExit, ImUser } from 'react-icons/im';
 import { toast } from 'react-toastify';
 // Redux selectors
-import { getIsLoading, getUserName } from 'redux/auth/authSelectors';
+import { selectIsLoading, selectUserName } from 'redux/auth/authSelectors';
 // React components
 import { CenteredLoader } from 'components/Loaders/Loaders';
 // Styled components
@@ -17,8 +17,8 @@ import {
 import { logOutUser } from 'redux/auth/authOperations';
 
 export const UserMenu = () => {
-  const userName = useSelector(getUserName);
-  const isLoading = useSelector(getIsLoading);
+  const userName = useSelector(selectUserName);
+  const isLoading = useSelector(selectIsLoading);
 
   const dispatch = useDispatch();
 

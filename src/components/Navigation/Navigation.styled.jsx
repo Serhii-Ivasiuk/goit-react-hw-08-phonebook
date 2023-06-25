@@ -14,7 +14,6 @@ export const StyledNavLink = styled(NavLink)`
   gap: 8px;
   height: 42px;
   padding: 12px 8px;
-  text-align: center;
   text-transform: uppercase;
   font-weight: 700;
   transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1);

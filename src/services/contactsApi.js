@@ -1,7 +1,7 @@
 // Libs
 import axios from 'axios';
 
-export const getContacts = () =>
+export const selectContacts = () =>
   axios.get('/contacts').then(response => response.data);
 
 export const addNewContact = newContact =>

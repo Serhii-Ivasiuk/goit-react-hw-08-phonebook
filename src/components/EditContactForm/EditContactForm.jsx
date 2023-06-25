@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { toast } from 'react-toastify';
 import * as Yup from 'yup';
 // Redux selectors
-import { getIsLoading } from 'redux/contacts/contactsSelectors';
+import { selectIsLoading } from 'redux/contacts/contactsSelectors';
 // Redux operations
 import { editContact } from 'redux/contacts/contactsOperations';
 // React components
@@ -51,7 +51,7 @@ export const EditContactForm = ({
   contactNumber,
   handleModalClose,
 }) => {
-  const isLoading = useSelector(getIsLoading);
+  const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
   const {
     formState: { errors, isDirty, isValid },

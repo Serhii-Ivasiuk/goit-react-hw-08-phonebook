@@ -2,7 +2,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 // Services
 import {
-  getContacts,
+  selectContacts,
   addNewContact,
   removeContact,
   updateContact,
@@ -12,7 +12,7 @@ export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',
   async (_, thunkAPI) => {
     try {
-      return await getContacts();
+      return await selectContacts();
     } catch {
       return thunkAPI.rejectWithValue('Failed to load contacts.');
     }

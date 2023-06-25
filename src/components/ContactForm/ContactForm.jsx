@@ -5,8 +5,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { toast } from 'react-toastify';
 import * as Yup from 'yup';
 // Redux selectors
-import { getContacts } from 'redux/contacts/contactsSelectors';
-import { getIsLoading } from 'redux/contacts/contactsSelectors';
+import { selectContacts } from 'redux/contacts/contactsSelectors';
+import { selectIsLoading } from 'redux/contacts/contactsSelectors';
 // Redux operations
 import { addContact } from 'redux/contacts/contactsOperations';
 // React components
@@ -52,8 +52,8 @@ const formSettings = {
 };
 
 export const ContactForm = () => {
-  const contacts = useSelector(getContacts);
-  const isLoading = useSelector(getIsLoading);
+  const contacts = useSelector(selectContacts);
+  const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
   const {
     formState: { errors, isDirty, isValid },

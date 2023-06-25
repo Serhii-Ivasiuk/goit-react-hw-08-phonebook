@@ -32,7 +32,7 @@ export const Container = styled.div`
   }
 
   @media screen and (min-width: 1240px) {
-    width: 1240px;
+    max-width: 1240px;
   }
 `;
 

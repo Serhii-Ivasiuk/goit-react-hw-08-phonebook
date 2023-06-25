@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { toast } from 'react-toastify';
+import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 // Redux selectors
 import { selectIsLoading } from 'redux/contacts/contactsSelectors';
@@ -111,4 +112,11 @@ export const EditContactForm = ({
       </SubmitBtn>
     </Form>
   );
+};
+
+EditContactForm.propTypes = {
+  id: PropTypes.string.isRequired,
+  contactName: PropTypes.string.isRequired,
+  contactNumber: PropTypes.string.isRequired,
+  handleModalClose: PropTypes.func.isRequired,
 };
